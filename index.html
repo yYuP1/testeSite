@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RACIENF</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 50px;
+        }
+        .logo {
+            height: 60px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        main {
+            padding: 50px;
+        }
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            background-color: #004080;
+            color: white;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .section-image {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function mostrarSecao(id) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo-racienf.png" alt="Logo RACIENF" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" onclick="mostrarSecao('menu-principal')">Menu Principal</a></li>
+                <li><a href="#" onclick="mostrarSecao('objetivo')">Objetivo</a></li>
+                <li><a href="#" onclick="mostrarSecao('missao')">Missão</a></li>
+                <li><a href="#" onclick="mostrarSecao('custo')">Custo-Benefício</a></li>
+                <li><a href="#" onclick="mostrarSecao('funcionamento')">Como Funciona</a></li>
+                <li><a href="#" onclick="mostrarSecao('caracteristicas')">Características</a></li>
+                <li><a href="#" onclick="mostrarSecao('contato')">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="menu-principal" class="content-section active">
+            <h1>Bem-vindo à RACIENF</h1>
+            <p>Somos uma empresa especializada em prestação de serviços de Command Center para Tomografia e Ressonância Magnética. 
+               Nosso objetivo é garantir exames de imagem com qualidade, eficiência e acessibilidade remota.</p>
+            <img src="menu-principal.jpg" alt="Menu Principal" class="section-image">
+        </div>
+        <div id="objetivo" class="content-section">
+            <h1>Objetivo</h1>
+            <p>Temos como objetivo otimizar os processos de exames de imagem.</p>
+            <img src="objetivo.jpg" alt="Objetivo" class="section-image">
+        </div>
+        <div id="missao" class="content-section">
+            <h1>Missão</h1>
+            <p>Prestar um serviço de excelência em exames de imagem com qualidade.</p>
+            <img src="missao.jpg" alt="Missão" class="section-image">
+        </div>
+        <div id="custo" class="content-section">
+            <h1>Custo-Benefício</h1>
+            <p>Diminuição no custo e no número de contratações;<br>
+            Menos encargos;<br>
+            Permitir o acesso 100% remoto totalmente operacional aos tecnólogos.<br>
+            Exames 24 horas, sem a necessidade de um técnico presencialmente;<br>
+            Alcançar remotamente locais sem mão-de-obra qualificada;<br>
+            Aumentar o mix de exames para o cliente;</p>
+            <img src="custo-beneficio.jpg" alt="Custo-Benefício" class="section-image">
+        </div>
+        <div id="funcionamento" class="content-section">
+            <h1>Como Funciona</h1>
+            <p>Através de uma central altamente qualificada, realizamos exames de imagem a distância, por meio de uma plataforma que nos conecta ao equipamento radiológico.</p>
+            <img src="funcionamento.jpg" alt="Como Funciona" class="section-image">
+        </div>
+        <div id="caracteristicas" class="content-section">
+            <h1>Características Gerais</h1>
+            <p>Monitoramento e interação ao vivo com o paciente;<br>
+            Interação com enfermeiros ou técnicos de saúde por voz e texto;<br>
+            Interação com dispositivos de intercomunicação ou periféricos necessários para controlar as ações do equipamento (iniciar exame, parar exame, mover mesa etc.);<br>
+            Registro de protocolos de exame com título, imagem, descrição e tempo de rotina.<br>
+            Acionadores de alerta visual para suporte reativo.</p>
+            <img src="caracteristicas.jpg" alt="Características" class="section-image">
+        </div>
+        <div id="contato" class="content-section">
+            <h1>Contato</h1>
+            <p>Para mais informações e caso esteja interessado em realizar uma visita, entre em contato conosco por:<br>
+            Telefone: (11) 2281-8686;<br>
+            E-Mail: contato@racienf.com.br;<br>
+            Site: <a href="http://www.racienf.com.br" target="_blank">www.racienf.com.br</a>;<br>
+            Instagram: @racienf_cc.<br><br>
+            Estamos localizados na Rua Duarte de Azevedo, 186 - Santana São Paulo/SP - 02036-020</p>
+            <img src="contato.jpg" alt="Contato" class="section-image">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 RACIENF. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
