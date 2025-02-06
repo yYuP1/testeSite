@@ -6,67 +6,198 @@
     <title>RACIENF</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Garantir que tudo se ajuste à tela */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
+            background-color: #f0f1f6;
+            color: #333;
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+            padding-bottom: 50px; /* Para evitar sobreposição do footer */
         }
+
         header {
-            background-color: #004080;
-            color: white;
-            padding: 15px 0;
+            background-color: #001f3d;
+            color: #fff;
+            padding: 20px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 50px;
+            width: 100%;
+            flex-wrap: wrap;
+            box-sizing: border-box;
         }
+
         .logo {
             height: 60px;
+            max-width: 100%;
         }
+
         nav ul {
+            display: flex;
             list-style: none;
             padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
         }
+
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            position: relative;
+            margin-left: 20px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        nav ul li a:hover {
+            background-color: #0052cc;
+            color: #fff;
+        }
+
+        /* Dropdown Menu */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #001f3d;
+            list-style: none;
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul li:hover > ul {
+            display: block;
+        }
+
+        nav ul li ul li a {
+            padding: 12px;
+            font-size: 14px;
+        }
+
         main {
-            padding: 50px;
+            padding: 20px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
+
         .content-section {
             display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            width: 80%;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 100%;
+            box-sizing: border-box;
         }
+
         .active {
             display: block;
         }
+
         footer {
-            background-color: #004080;
+            background-color: #001f3d;
             color: white;
-            padding: 10px 0;
-            position: absolute;
-            width: 100%;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
             bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 100; /* Garante que o footer fique acima de outros conteúdos */
         }
+
         .section-image {
             width: 100%;
-            max-width: 500px;
+            max-width: 100%;
+            height: auto;
             margin-top: 20px;
-            border-radius: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            nav ul {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            nav ul li {
+                margin-left: 0;
+                width: 100%;
+            }
+            .content-section {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            .logo {
+                height: 50px;
+            }
+            nav ul li a {
+                font-size: 14px;
+                padding: 8px;
+            }
+            main {
+                padding: 20px 10px;
+            }
+            .section-image {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav ul li {
+                margin-left: 0;
+                width: 100%;
+            }
+            main {
+                padding: 20px 10px;
+            }
+            footer {
+                font-size: 12px;
+                padding: 15px;
+            }
         }
     </style>
     <script>
@@ -76,6 +207,19 @@
             });
             document.getElementById(id).classList.add('active');
         }
+
+        function toggleMenu() {
+            var menu = document.getElementById('opcoes-list');
+            menu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            var menu = document.getElementById('opcoes-list');
+            var menuButton = document.querySelector('nav ul li a');
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('active');
+            }
+        });
     </script>
 </head>
 <body>
@@ -84,11 +228,15 @@
         <nav>
             <ul>
                 <li><a href="#" onclick="mostrarSecao('menu-principal')">Menu Principal</a></li>
-                <li><a href="#" onclick="mostrarSecao('objetivo')">Objetivo</a></li>
-                <li><a href="#" onclick="mostrarSecao('missao')">Missão</a></li>
-                <li><a href="#" onclick="mostrarSecao('custo')">Custo-Benefício</a></li>
-                <li><a href="#" onclick="mostrarSecao('funcionamento')">Como Funciona</a></li>
-                <li><a href="#" onclick="mostrarSecao('caracteristicas')">Características</a></li>
+                <li><a href="#" onclick="toggleMenu()">Opções</a>
+                    <ul id="opcoes-list">
+                        <li><a href="#" onclick="mostrarSecao('objetivo')">Objetivo</a></li>
+                        <li><a href="#" onclick="mostrarSecao('missao')">Missão</a></li>
+                        <li><a href="#" onclick="mostrarSecao('custo')">Custo-Benefício</a></li>
+                        <li><a href="#" onclick="mostrarSecao('funcionamento')">Como Funciona</a></li>
+                        <li><a href="#" onclick="mostrarSecao('caracteristicas')">Características</a></li>
+                    </ul>
+                </li>
                 <li><a href="#" onclick="mostrarSecao('contato')">Contato</a></li>
             </ul>
         </nav>
